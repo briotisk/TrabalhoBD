@@ -25,9 +25,9 @@ INSERT INTO COLONIA
        VALUES
             (123456789100,'Terra',123,123,'Nova Catanduva',1500),
             (123456789101,'Terra',124,125,'Brasilio',2300),
-            (123456789102,'Marte',100,100,'Natalina',2321)
-	    (123456789103,'Titã',500,500,'Ararino',3500)	
-	    (123456789104,'Marte',700,700,'Campo Longo',4000)
+            (123456789102,'Marte',100,100,'Natalina',2321),
+	    (123456789103,'Titã',500,500,'Ararino',3500),	
+	    (123456789104,'Marte',700,700,'Campo Longo',4000),
 	    (123456789105,'Titã',800,800,'São Marcos',4500);
 
 INSERT INTO INSTALACAO
