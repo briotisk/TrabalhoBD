@@ -114,8 +114,8 @@ INSERT INTO LABORATORIO
 
 INSERT INTO PROJETO_PESQUISA
        VALUES
-            (),
-            ();
+            (123456, 12345678908, 889347311, 'Tecnologia'),
+            (654321, 12345678913, 112255924, 'Químico');
 
 INSERT INTO HOSPITAL
        VALUES
@@ -124,8 +124,8 @@ INSERT INTO HOSPITAL
 
 INSERT INTO DEFENDE
        VALUES
-            (),
-            ();
+            (123456789101, 12345678901),
+            (123456789103, 12345678910);
 
 INSERT INTO EXPLORA
        VALUES
