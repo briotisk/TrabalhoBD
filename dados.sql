@@ -90,18 +90,18 @@ INSERT INTO MILITAR
 
 INSERT INTO PILOTO
        VALUES
-            (),
-            ();
+            (12345678900,1234567890),
+            (12345678911,1234567891);
 
 INSERT INTO EXPLORADOR
        VALUES
-            (),
-            ();
+            (12345678906),
+            (12345678912);
 
 INSERT INTO SOLDADO
        VALUES
-            (),
-            ();
+            (12345678901),
+            (12345678910);
 
 INSERT INTO LABORATORIO
        VALUES
