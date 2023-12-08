@@ -139,13 +139,13 @@ INSERT INTO PROJETA_INSTALACAO
 
 INSERT INTO CONSTROI_INSTALACAO
        VALUES
-            (),
-            ();
+            (12345678902,343872300),
+            (12345678909,861820375);
 
 INSERT INTO TRABALHO_SAUDE
        VALUES
-            (),
-            ();
+            (12345678903,123456789,hora,hora),
+            (12345678905,412986490,hora,hora);
 
 INSERT INTO ROTA
        VALUES
