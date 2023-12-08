@@ -129,8 +129,8 @@ INSERT INTO DEFENDE
 
 INSERT INTO EXPLORA
        VALUES
-            (),
-            ();
+            (12345678906,'Marte',datahora),
+            (12345678912,'Titã',datahora);
 
 INSERT INTO PROJETA_INSTALACAO
        VALUES
