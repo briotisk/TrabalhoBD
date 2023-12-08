@@ -32,9 +32,12 @@ INSERT INTO COLONIA
 
 INSERT INTO INSTALACAO
        VALUES
-            (),
-            (),
-            ();
+            (123456789, 123456789100, 'Benjamin', 492, 'HOSPITAL', 152, 10000000, 1000, 1200),
+            (112255924, 123456789101, 'SantosB', 2, 'LABORATORIO', 24, 400000, 200, 250),
+            (861820375, 123456789102, 'Caioba', 101, 'BASE MILITAR', 200, 35000000, 1200, 2000),
+            (889347311, 123456789103, 'ETBilu', 530, 'LABORATORIO', 30, 550000, 220, 240),
+            (343872300, 123456789104, 'Palmeiras', 12, 'BASE MILITAR', 158, 40000000, 1500, 2100),
+            (412986490, 123456789105, 'Treze', 198, 'HOSPITAL', 204, 15000000, 980, 1100);
 
 INSERT INTO PESSOA
        VALUES
@@ -71,8 +74,8 @@ INSERT INTO PESQUISADOR
 
 INSERT INTO BASE_MILITAR
        VALUES
-            (),
-            ();
+            (861820375),
+            (343872300);
 
 INSERT INTO MILITAR
        VALUES
@@ -96,8 +99,8 @@ INSERT INTO SOLDADO
 
 INSERT INTO LABORATORIO
        VALUES
-            (),
-            ();
+            (112255924),
+            (889347311);
 
 INSERT INTO PROJETO_PESQUISA
        VALUES
@@ -106,8 +109,8 @@ INSERT INTO PROJETO_PESQUISA
 
 INSERT INTO HOSPITAL
        VALUES
-            (),
-            ();
+            (123456789, 'Albert Einstein', 300, 101),
+            (412986490, 'Unimed', 500, 232);
 
 INSERT INTO DEFENDE
        VALUES
