@@ -85,8 +85,12 @@ INSERT INTO BASE_MILITAR
 
 INSERT INTO MILITAR
        VALUES
-            (),
-            ();
+            (12345678900, 'Tenente', 'Piloto', HORA_ENTRADA, HORA_SAIDA, 343872300),
+            (12345678901, 'Cabo', 'Soldado', HORA_ENTRADA, HORA_SAIDA, 861820375),
+            (12345678906, 'Sargento', 'Explorador', HORA_ENTRADA, 343872300),
+            (12345678910, 'Major', 'Soldado', HORA_ENTRADA, HORA_SAIDA, 343872300),
+            (12345678911, 'General', 'Piloto', HORA_ENTRADA, HORA_SAIDA, 861820375),
+            (12345678912, 'Coronel', 'Explorador', HORA_ENTRADA, HORA_SAIDA, 861820375);
 
 INSERT INTO PILOTO
        VALUES
