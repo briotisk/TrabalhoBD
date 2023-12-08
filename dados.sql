@@ -70,13 +70,13 @@ INSERT INTO OPERARIO
 
 INSERT INTO PROFISSIONAL_SAUDE
        VALUES
-            (),
-            ();
+            (12345678903, 813401),
+            (12345678905, 198245);
 
 INSERT INTO PESQUISADOR
        VALUES
-            (),
-            ();
+            (12345678908, 1289516259),
+            (12345678913, 8023457092);
 
 INSERT INTO BASE_MILITAR
        VALUES
