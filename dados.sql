@@ -50,12 +50,12 @@ INSERT INTO PESSOA
             (12345678906,'Felipe','Campo Longo',TO_DATE('31/01/2001,DD/MM/YYYY'),'Militar'),
             (12345678907,'Daniel','São Marcos',TO_DATE('11/11/2002, DD/MM/YYYY'),'Engenheiro'),
             (12345678908,'Guilherme','Ararino',TO_DATE('23/01/2001,DD/MM/YYYY'),'Pesquisador'),
-            (12345678909,'Aquiles','Nova Catanduva',TO_DATE('11/09/1994,DD/MM/YYYY'),'Operario')
-	    (12345678910,'Fausto Silva','Ararino',TO_DATE('08/03/1990,DD/MM/YYYY'),'Militar')
-	    (12345678911,'Leila Pereira','Campo Longo',TO_DATE('01/01/2001,DD/MM/YYYY'),'Militar')
-	    (12345678912,'Edson Arantes','Natalino',TO_DATE('12/10/1994,DD/MM/YYYY'),'Militar')
-	    (12345678913,'Marcos Leonardo','Natalino',TO_DATE('01/02/2003,DD/MM/YYYY'),'Pesquisador')
-	    (12345678914,'Joaquim','Ararino',TO_DATE('10/04/1999,DD/MM/YYYY'),null)
+            (12345678909,'Aquiles','Nova Catanduva',TO_DATE('11/09/1994,DD/MM/YYYY'),'Operario'),
+	    (12345678910,'Fausto Silva','Ararino',TO_DATE('08/03/1990,DD/MM/YYYY'),'Militar'),
+	    (12345678911,'Leila Pereira','Campo Longo',TO_DATE('01/01/2001,DD/MM/YYYY'),'Militar'),
+	    (12345678912,'Edson Arantes','Natalino',TO_DATE('12/10/1994,DD/MM/YYYY'),'Militar'),
+	    (12345678913,'Marcos Leonardo','Natalino',TO_DATE('01/02/2003,DD/MM/YYYY'),'Pesquisador'),
+	    (12345678914,'Joaquim','Ararino',TO_DATE('10/04/1999,DD/MM/YYYY'),null),
 	    (12345678915,'Mancho Verdo','Nova Catanduva',TO_DATE('02/02/1992,DD/MM/YYYY'),null);
 
 INSERT INTO ENGENHEIRO
