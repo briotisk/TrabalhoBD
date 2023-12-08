@@ -60,13 +60,13 @@ INSERT INTO PESSOA
 
 INSERT INTO ENGENHEIRO
        VALUES
-            (),
-            ();
+            (12345678907,1234567890),
+            (12345678904,1234567891);
 
 INSERT INTO OPERARIO
        VALUES
-            (),
-            ();
+            (12345678909,23456789012),
+            (12345678905,23456789013);
 
 INSERT INTO PROFISSIONAL_SAUDE
        VALUES
