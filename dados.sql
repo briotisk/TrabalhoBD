@@ -71,8 +71,8 @@ INSERT INTO PESQUISADOR
 
 INSERT INTO BASE_MILITAR
        VALUES
-            (),
-            ();
+            (861820375),
+            (343872300);
 
 INSERT INTO MILITAR
        VALUES
@@ -96,8 +96,8 @@ INSERT INTO SOLDADO
 
 INSERT INTO LABORATORIO
        VALUES
-            (),
-            ();
+            (112255924),
+            (889347311);
 
 INSERT INTO PROJETO_PESQUISA
        VALUES
@@ -106,8 +106,8 @@ INSERT INTO PROJETO_PESQUISA
 
 INSERT INTO HOSPITAL
        VALUES
-            (),
-            ();
+            (123456789, 'Albert Einstein', 300, 101),
+            (412986490, 'Unimed', 500, 232);
 
 INSERT INTO DEFENDE
        VALUES
