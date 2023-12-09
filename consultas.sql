@@ -1,0 +1,1 @@
+-- Consultar todos os leitos disponíveis em uma colônia
