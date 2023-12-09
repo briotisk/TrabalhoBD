@@ -41,36 +41,42 @@ INSERT INTO INSTALACAO
 
 INSERT INTO PESSOA
        VALUES
-            (12345678900,'Gabriel','Nova Catanduva','04/02/2003',),
-            (12345678901,'Caio'),
-            (12345678902,'Arthur'),
-            (12345678903,'Daniela'),
-            (12345678904,'Melissa'),
-            (12345678905,'Bruna'),
-            (12345678906,'Felipe'),
-            (12345678907,'Daniel'),
-            (12345678908,'Guilherme'),
-            (12345678909,'Aquiles');
+            (12345678900,'Gabriel','Nova Catanduva',TO_DATE('04/02/2003, DD/MM/YYYY'),'Militar'),
+            (12345678901,'Caio','Brasilio',TO_DATE('10/07/2002, DD/MM/YYYY'),'Militar'),
+            (12345678902,'Arthur','Natalino',TO_DATE('15/08/1985,DD/MM/YYYY'),'Operario'),
+            (12345678903,'Daniela','Aranino',TO_DATE('04/07/2000, DD/MM/YYYY'),'Profissional da Saude'),
+            (12345678904,'Melissa','São Marcos',TO_DATE('19/02/2003,DD/MM/YYYY'),'Engenheiro'),
+            (12345678905,'Bruna','São Marcos',TO_DATE('17/09/2003,DD/MM/YYYY'),'Profissional da Saude'),
+            (12345678906,'Felipe','Campo Longo',TO_DATE('31/01/2001,DD/MM/YYYY'),'Militar'),
+            (12345678907,'Daniel','São Marcos',TO_DATE('11/11/2002, DD/MM/YYYY'),'Engenheiro'),
+            (12345678908,'Guilherme','Ararino',TO_DATE('23/01/2001,DD/MM/YYYY'),'Pesquisador'),
+            (12345678909,'Aquiles','Nova Catanduva',TO_DATE('11/09/1994,DD/MM/YYYY'),'Operario'),
+	    (12345678910,'Fausto Silva','Ararino',TO_DATE('08/03/1990,DD/MM/YYYY'),'Militar'),
+	    (12345678911,'Leila Pereira','Campo Longo',TO_DATE('01/01/2001,DD/MM/YYYY'),'Militar'),
+	    (12345678912,'Edson Arantes','Natalino',TO_DATE('12/10/1994,DD/MM/YYYY'),'Militar'),
+	    (12345678913,'Marcos Leonardo','Natalino',TO_DATE('01/02/2003,DD/MM/YYYY'),'Pesquisador'),
+	    (12345678914,'Joaquim','Ararino',TO_DATE('10/04/1999,DD/MM/YYYY'),null),
+	    (12345678915,'Mancho Verdo','Nova Catanduva',TO_DATE('02/02/1992,DD/MM/YYYY'),null);
 
 INSERT INTO ENGENHEIRO
        VALUES
-            (),
-            ();
+            (12345678907,1234567890),
+            (12345678904,1234567891);
 
 INSERT INTO OPERARIO
        VALUES
-            (),
-            ();
+            (12345678909,23456789012),
+            (12345678905,23456789013);
 
 INSERT INTO PROFISSIONAL_SAUDE
        VALUES
-            (),
-            ();
+            (12345678903, 813401),
+            (12345678905, 198245);
 
 INSERT INTO PESQUISADOR
        VALUES
-            (),
-            ();
+            (12345678908, 1289516259),
+            (12345678913, 8023457092);
 
 INSERT INTO BASE_MILITAR
        VALUES
@@ -79,23 +85,27 @@ INSERT INTO BASE_MILITAR
 
 INSERT INTO MILITAR
        VALUES
-            (),
-            ();
+            (12345678900, 'Tenente', 'Piloto', TIME(('06:00:00, HH:MM:SS')), TIME(('18:00:00, HH:MM:SS')), 343872300),
+            (12345678901, 'Cabo', 'Soldado', TIME(('10:00:00, HH:MM:SS')), TIME(('22:00:00, HH:MM:SS')), 861820375),
+            (12345678906, 'Sargento', 'Explorador', TIME(('12:00:00, HH:MM:SS')), TIME(('00:00:00, HH:MM:SS')), 343872300),
+            (12345678910, 'Major', 'Soldado', TIME(('22:00:00, HH:MM:SS')), TIME(('10:00:00, HH:MM:SS')), 343872300),
+            (12345678911, 'General', 'Piloto', TIME(('18:00:00, HH:MM:SS')), TIME(('06:00:00, HH:MM:SS')), 861820375),
+            (12345678912, 'Coronel', 'Explorador', TIME(('00:00:00, HH:MM:SS')), TIME(('12:00:00, HH:MM:SS')), 861820375);
 
 INSERT INTO PILOTO
        VALUES
-            (),
-            ();
+            (12345678900,1234567890),
+            (12345678911,1234567891);
 
 INSERT INTO EXPLORADOR
        VALUES
-            (),
-            ();
+            (12345678906),
+            (12345678912);
 
 INSERT INTO SOLDADO
        VALUES
-            (),
-            ();
+            (12345678901),
+            (12345678910);
 
 INSERT INTO LABORATORIO
        VALUES
@@ -104,8 +114,8 @@ INSERT INTO LABORATORIO
 
 INSERT INTO PROJETO_PESQUISA
        VALUES
-            (),
-            ();
+            (123456, 12345678908, 889347311, 'Tecnologia'),
+            (654321, 12345678913, 112255924, 'Químico');
 
 INSERT INTO HOSPITAL
        VALUES
@@ -114,40 +124,53 @@ INSERT INTO HOSPITAL
 
 INSERT INTO DEFENDE
        VALUES
-            (),
-            ();
+            (123456789101, 12345678901),
+            (123456789103, 12345678910);
 
 INSERT INTO EXPLORA
        VALUES
-            (),
-            ();
+            (12345678906,'Marte', TIMESTAMP('21/06/2023 12:30:00, DD/MM/YYYY HH:MM:SS')),
+            (12345678912,'Titã', TIMESTAMP('10/08/2023 17:00:00, DD/MM/YYYY HH:MM:SS'));
 
 INSERT INTO PROJETA_INSTALACAO
        VALUES
-            (),
-            ();
+            (12345678907,889347311),
+            (12345678904,112255924);
 
 INSERT INTO CONSTROI_INSTALACAO
        VALUES
-            (),
-            ();
+            (12345678902,343872300),
+            (12345678909,861820375);
 
 INSERT INTO TRABALHO_SAUDE
        VALUES
-            (),
-            ();
+            (12345678903,123456789,TIME('10:00:00, HH:MM:SS'),TIME('18:00:00, HH:MM:SS')),
+            (12345678905,412986490,TIME('02:00:00, HH:MM:SS'),TIME('10:00:00, HH:MM:SS'));
 
 INSERT INTO ROTA
        VALUES
-            (),
-            ();
+            ('Ararino','Nova Catanduva',220000,1200),
+            ('Nova Catanduva','Brasilio',270,70),
+	    ('Natalina','Campo Longo',330,80),
+	    ('Ararino','São Marcos',400,100),
+	    ('Campo Longo','São Marcos',150000,1000),
+            ('Brasilio','Campo Longo',45000,1000),
+            ('São Marcos','Brasilio',218000,1000),
+	    ('Campo Longo','Nova Catanduva',50000,1000);
 
 INSERT INTO VIAGEM
        VALUES
-            (),
-            ();
+            (TIMESTAMP('12/02/2023,DD/MM/YYYY'),'HSL9D9S2','Ararino','São Marcos',400,TIMESTAMP('12:30:00,HH/MM/SS'),200,12345678900,TIME('02:00, HH:MM')),
+	    (TIMESTAMP('20/08/2023,DD/MM/YYYY'),'HSL9D9S2','Ararino','Nova Catanduva',220000,TIMESTAMP('15:00:00,HH/MM/SS'),1400,12345678900,TIME('200:00, HHH:MM')),
+            (TIMESTAMP('12/10/2022,DD/MM/YYYY'),'HSL9D9S2','Nova Catanduva','Brasilio',270,TIMESTAMP('10:30:00,HH/MM/SS'),230,12345678900,TIME('01:20, HH:MM')),
+	    (TIMESTAMP('30/03/2020,DD/MM/YYYY'),'HSL9D9S2','Natalina','Campo Longo',330,TIMESTAMP('19:30:00,HH/MM/SS'),260,12345678900,TIME('01:10, HH:MM')),
+	    (TIMESTAMP('2O/02/2023,DD/MM/YYYY'),'LDV37C3F','Campo Longo','São Marcos',150000,TIMESTAMP('12:00:00,HH/MM/SS'),1000,12345678911,TIME('155:00, HHH:MM')),
+            (TIMESTAMP('31/01/2022,DD/MM/YYYY'),'LDV37C3F','Brasilio','Campo Longo',45000,TIMESTAMP('02:00:00,HH/MM/SS'),500,12345678911,TIME('90:00, HH:MM')),
+            (TIMESTAMP('04/02/2023,DD/MM/YYYY'),'LDV37C3F','São Marcos','Brasilio',21800,TIMESTAMP('20:30:00,HH/MM/SS'),1375,12345678911,TIME('220:00, HHH:MM')),
+	    (TIMESTAMP('21/07/2022,DD/MM/YYYY'),'LDV37C3F', 'Campo Longo','Nova Catanduva',50000,TIMESTAMP('21:30:00,HH/MM/SS'),510,12345678911,TIME('100:00, HH:MM'));	
+	
 
 INSERT INTO VIAJAM
        VALUES
-            (),
-            ();
+            (12345678900, TIMESTAMP('10/01/2023 09:30:00, DD/MM/YYYY HH:MM:SS'), 'HSL9D9S2'),
+            (12345678911, TIMESTAMP('27/09/2023 19:00:00, DD/MM/YYYY HH:MM:SS'), 'LDV37C3F');
