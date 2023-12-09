@@ -2,8 +2,6 @@ import re
 import psycopg
 from datetime import datetime
 
-#falta evitar SQL injection
-
 def calculaDuracaoViagem(hora_saida, hora_chegada):
 
     # Crie um objeto datetime a partir da string
@@ -138,7 +136,7 @@ def inserirViagem():
 def consultarViagem():
 
     #leituras e checagens relativas a cada atributo de interesse da pesquisa
-    data_viagem = input("Digite a data da viagem: ")
+    data_viagem = input("Digite a data da viagem (no formato DD/MM/YYYY): ")
     while not verificarFormatoData(data_viagem):
         print("Parece que você digitou uma data inválida ou no formato errado. Tente novamente.")
         data_viagem = input("Digite a data da viagem: ")
