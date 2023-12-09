@@ -70,10 +70,10 @@ def inserirViagem():
                 print("A distância digitada é maior que a permitida para as viagens.")
             distancia = input("Digite a distância da rota utilizada na viagem: ")
 
-        hora_chegada = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
-        while not verificarFormatoHorario(hora_chegada):
-            print("Parece que você digitou a hora no formato errado ou valor inválido. Tente novamente.")
-            hora_chegada = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
+        hora_chegada = input("Insira a data e a hora prevista para a chegada da nave à colônia de destino (no formato DD/MM/YYYY hh:mm): ")
+        while (not verificarFormatoData(hora_chegada.split()[0])) or (not verificarFormatoHorario(hora_chegada.split()[1])):
+            print("Parece que você digitou uma data ou uma hora inválida ou no formato errado. Tente novamente.")
+            hora_chegada = input("Insira a data e a hora prevista para a chegada da nave à colônia de destino (no formato DD/MM/YYYY hh:mm): ")
 
         preco = input("Insira o preço da passagem (utilize '.' como separador decimal se necessário): ")
         while not verificarFormatoPreco(preco):
@@ -85,11 +85,15 @@ def inserirViagem():
             print("Parece que você digitou um CPF inválido. Tente novamente.")
             piloto = input("Digite o CPF do piloto responsável pela viagem: ")
         
-        duracao_obj = datetime.strptime(data_hora.split()[1], "%d/%m/%Y %H:%M") - datetime.strptime(hora_chegada, "%d/%m/%Y %H:%M")
-        duracao = duracao_obj.strftime("%d/%m/%Y %H:%M")
+        duracao = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
+        while not verificarFormatoHorario(duracao):
+            print("Parece que você digitou a hora no formato errado ou valor inválido. Tente novamente.")
+            duracao = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
+        ##duracao_obj = datetime.strptime(data_hora.split()[1], "%H:%M").time() - datetime.strptime(hora_chegada, "%H:%M").time()
+        ##duracao = datetime.combine(datetime.today(), duracao_obj).strftime("%H:%M")
+        ##print(duracao)
 
-        ######################################################
-        #TRATAR EXCEÇÕES
+        print("INSERT INTO VIAGEM VALUES('" + data_hora + ":00', '" + nave + "', " + origem + ", " + destino + ", " + distancia + ", '" + hora_chegada + ":00', " + preco + ", " + piloto + ", '" + duracao + ":00')")
 
         try:
             #conecta-se à base de dados 
@@ -98,15 +102,15 @@ def inserirViagem():
                 #abre um cursor para realizar as operações no banco de dados
                 with conexao.cursor() as cur:
                 
-                    #executa um comando
-                    #cur.execute(pesquisa)
-                    cur.execute("INSERT INTO VIAGEM VALUES('%s:00,DD/MM/YYYY HH:MM:SS', '%s', '%s', '%s', %s, '%s:00,HH:MM:SS', %s, %s, '%s:00,HH:MM:SS'", (data_hora, nave, origem, destino, distancia, hora_chegada, preco, piloto, duracao))
+                    #executa o comando de inserção passando os valores lidos como argumento
+                    cur.execute("INSERT INTO VIAGEM VALUES('" + data_hora + ":00', '" + nave + "', " + origem + ", " + destino + ", " + distancia + ", '" + hora_chegada + ":00', " + preco + ", " + piloto + ", '" + duracao + ":00')")
 
                     #salva as alterações 
                     conexao.commit()
 
         except Exception as e:
-            print(f"Erro na conexão: {e}")
+            print(f"Erro na inserção: {e}")
+            conexao.rollback()
 
 #função que lê os dados da viagem a ser consultada e realiza a consulta de fato
 def consultarViagem():
@@ -131,12 +135,10 @@ def consultarViagem():
     if destino == "":
         #pesquisar todas as viagens que partem da colonia origem na data especificada
         pesquisa = "SELECT * FROM VIAGEM WHERE COLONIA_SAIDA = " + origem + " AND DATE(DATA_HORA) = '" + data_viagem + "'"
-        print(pesquisa)
 
     else:
         #pesquisar todas as viagens entre as colônias de origem e destino na data especificada
         pesquisa = "SELECT * FROM VIAGEM WHERE COLONIA_SAIDA = " + origem + " AND DATE(DATA_HORA) = '" + data_viagem + "' AND COLONIA_CHEGADA = " + destino
-        print(pesquisa)
     
     try:
         #conecta-se à base de dados 
@@ -147,20 +149,29 @@ def consultarViagem():
             
                 #executa um comando
                 cur.execute(pesquisa)
-                #cur.execute("SELECT * FROM VIAGEM")
 
                 #retorna a lista de tuplas que obedecem à condição de consulta
                 list = cur.fetchall()
 
                 #percorre a lista e imprime as tuplas
-                for record in list:
-                    print(record)
+                if len(list) == 0:
+
+                    if destino == "":
+                        print("Ops... parece que não há viagens partindo do destino selecionado na data especificada")
+
+                    else:
+                        print("Ops... parece que não viagens entre estas colonias na data especificada")
+                else:
+
+                    for record in list:
+                        print(record)
 
                 #salva as alterações 
                 conexao.commit()
 
     except Exception as e:
-        print(f"Erro na conexão: {e}")
+        print(f"Erro na consulta: {e}")
+        conexao.rollback()
 
     
 
