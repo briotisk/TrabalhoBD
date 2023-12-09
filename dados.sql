@@ -155,11 +155,7 @@ INSERT INTO ROTA
 	    ('Ararino','São Marcos',400,100),
 	    ('Campo Longo','São Marcos',150000,1000),
             ('Brasilio','Campo Longo',45000,1000),
-<<<<<<< HEAD
             ('São Marcos','Brasilio',218000,1000),
-=======
-            ('São Marcos','Brasilio',218000,1200),
->>>>>>> c480d8d5a4df42537c12379d650a23f880aa5523
 	    ('Campo Longo','Nova Catanduva',50000,1000);
 
 INSERT INTO VIAGEM
