@@ -1,5 +1,6 @@
 import re
 import psycopg
+from datetime import datetime
 
 #falta evitar SQL injection
 
@@ -83,33 +84,29 @@ def inserirViagem():
         while (len(piloto) != 11) or (not piloto.isnumeric()):
             print("Parece que você digitou um CPF inválido. Tente novamente.")
             piloto = input("Digite o CPF do piloto responsável pela viagem: ")
-
-        duracao = input("Insira a duração prevista da viagem (no formato hh:mm): ")
-        while not verificarFormatoHorario(duracao):
-            print("Parece que você digitou a hora no formato errado ou valor inválido. Tente novamente.")
-            duracao = input("Insira a duração real da viagem (no formato hh:mm): ")
-
-######################################################
-#TRATAR EXCEÇÕES
-
-        #conecta-se à base de dados 
-        with psycopg.connect("dbname=trab-bd user=postgres") as conexao:
         
-            #abre um cursor para realizar as operações no banco de dados
-            with conexao.cursor() as cur:
+        duracao_obj = datetime.strptime(data_hora.split()[1], "%d/%m/%Y %H:%M") - datetime.strptime(hora_chegada, "%d/%m/%Y %H:%M")
+        duracao = duracao_obj.strftime("%d/%m/%Y %H:%M")
+
+        ######################################################
+        #TRATAR EXCEÇÕES
+
+        try:
+            #conecta-se à base de dados 
+            with psycopg.connect("host=localhost port=5432 dbname=postgres user=briotisk password=123admin connect_timeout=10") as conexao:
             
-                #executa um comando
-                cur.execute("INSERT INTO VIAGEM VALUES('%s:00,DD/MM/YYYY HH:MM:SS', '%s', '%s', '%s', %s, '%s:00,HH:MM:SS', %s, %s, '%s:00,HH:MM:SS'", (data_hora, nave, origem, destino, hora_chegada, preco, piloto, duracao))
+                #abre um cursor para realizar as operações no banco de dados
+                with conexao.cursor() as cur:
+                
+                    #executa um comando
+                    #cur.execute(pesquisa)
+                    cur.execute("INSERT INTO VIAGEM VALUES('%s:00,DD/MM/YYYY HH:MM:SS', '%s', '%s', '%s', %s, '%s:00,HH:MM:SS', %s, %s, '%s:00,HH:MM:SS'", (data_hora, nave, origem, destino, distancia, hora_chegada, preco, piloto, duracao))
 
-                #retorna a lista de tuplas que obedecem à condição de consulta
-                cur.fetchall()
+                    #salva as alterações 
+                    conexao.commit()
 
-                #percorre a lista e imprime as tuplas
-                for record in cur:
-                    print(record)
-
-                #salva as alterações 
-                conexao.commit()
+        except Exception as e:
+            print(f"Erro na conexão: {e}")
 
 #função que lê os dados da viagem a ser consultada e realiza a consulta de fato
 def consultarViagem():
@@ -133,32 +130,39 @@ def consultarViagem():
     #verifica se o usuário especificou o destino
     if destino == "":
         #pesquisar todas as viagens que partem da colonia origem na data especificada
-        pesquisa = "SELECT * FROM VIAGEM WHERE ORIGEM = " + origem + " AND DATA_HORA = " + data_viagem
+        pesquisa = "SELECT * FROM VIAGEM WHERE COLONIA_SAIDA = " + origem + " AND DATE(DATA_HORA) = '" + data_viagem + "'"
         print(pesquisa)
 
     else:
         #pesquisar todas as viagens entre as colônias de origem e destino na data especificada
-        pesquisa = "SELECT * FROM VIAGEM WHERE COLONIA_SAIDA = " + origem + " AND DATE(DATA_HORA) = " + data_viagem + " AND COLONIA_CHEGADA = " + destino
+        pesquisa = "SELECT * FROM VIAGEM WHERE COLONIA_SAIDA = " + origem + " AND DATE(DATA_HORA) = '" + data_viagem + "' AND COLONIA_CHEGADA = " + destino
         print(pesquisa)
     
-    #conecta-se à base de dados 
-    with psycopg.connect("dbname=trab-bd user=postgres") as conexao:
+    try:
+        #conecta-se à base de dados 
+        with psycopg.connect("host=localhost port=5432 dbname=postgres user=briotisk password=123admin connect_timeout=10") as conexao:
     
-        #abre um cursor para realizar as operações no banco de dados
-        with conexao.cursor() as cur:
-        
-            #executa um comando
-            cur.execute(pesquisa)
+            #abre um cursor para realizar as operações no banco de dados
+            with conexao.cursor() as cur:
+            
+                #executa um comando
+                cur.execute(pesquisa)
+                #cur.execute("SELECT * FROM VIAGEM")
 
-            #retorna a lista de tuplas que obedecem à condição de consulta
-            cur.fetchall()
+                #retorna a lista de tuplas que obedecem à condição de consulta
+                list = cur.fetchall()
 
-            #percorre a lista e imprime as tuplas
-            for record in cur:
-                print(record)
+                #percorre a lista e imprime as tuplas
+                for record in list:
+                    print(record)
 
-            #salva as alterações 
-            conexao.commit()
+                #salva as alterações 
+                conexao.commit()
+
+    except Exception as e:
+        print(f"Erro na conexão: {e}")
+
+    
 
 #variável para armazenar a escolha do usuário
 op = 0
