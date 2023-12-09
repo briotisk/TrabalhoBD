@@ -41,22 +41,22 @@ INSERT INTO INSTALACAO
 
 INSERT INTO PESSOA
        VALUES
-            (12345678900,'Gabriel','Nova Catanduva',TO_DATE('04/02/2003, DD/MM/YYYY'),'Militar'),
-            (12345678901,'Caio','Brasilio',TO_DATE('10/07/2002, DD/MM/YYYY'),'Militar'),
-            (12345678902,'Arthur','Natalino',TO_DATE('15/08/1985,DD/MM/YYYY'),'Operario'),
-            (12345678903,'Daniela','Aranino',TO_DATE('04/07/2000, DD/MM/YYYY'),'Profissional da Saude'),
-            (12345678904,'Melissa','São Marcos',TO_DATE('19/02/2003,DD/MM/YYYY'),'Engenheiro'),
-            (12345678905,'Bruna','São Marcos',TO_DATE('17/09/2003,DD/MM/YYYY'),'Profissional da Saude'),
-            (12345678906,'Felipe','Campo Longo',TO_DATE('31/01/2001,DD/MM/YYYY'),'Militar'),
-            (12345678907,'Daniel','São Marcos',TO_DATE('11/11/2002, DD/MM/YYYY'),'Engenheiro'),
-            (12345678908,'Guilherme','Ararino',TO_DATE('23/01/2001,DD/MM/YYYY'),'Pesquisador'),
-            (12345678909,'Aquiles','Nova Catanduva',TO_DATE('11/09/1994,DD/MM/YYYY'),'Operario'),
-	    (12345678910,'Fausto Silva','Ararino',TO_DATE('08/03/1990,DD/MM/YYYY'),'Militar'),
-	    (12345678911,'Leila Pereira','Campo Longo',TO_DATE('01/01/2001,DD/MM/YYYY'),'Militar'),
-	    (12345678912,'Edson Arantes','Natalino',TO_DATE('12/10/1994,DD/MM/YYYY'),'Militar'),
-	    (12345678913,'Marcos Leonardo','Natalino',TO_DATE('01/02/2003,DD/MM/YYYY'),'Pesquisador'),
-	    (12345678914,'Joaquim','Ararino',TO_DATE('10/04/1999,DD/MM/YYYY'),null),
-	    (12345678915,'Mancho Verdo','Nova Catanduva',TO_DATE('02/02/1992,DD/MM/YYYY'),null);
+            (12345678900,'Gabriel',123456789100,TO_DATE('04/02/2003', 'DD/MM/YYYY'),'Militar'),
+            (12345678901,'Caio',123456789101,TO_DATE('10/07/2002', 'DD/MM/YYYY'),'Militar'),
+            (12345678902,'Arthur',123456789102,TO_DATE('15/08/1985','DD/MM/YYYY'),'Operario'),
+            (12345678903,'Daniela',123456789103,TO_DATE('04/07/2000', 'DD/MM/YYYY'),'Profissional da Saude'),
+            (12345678904,'Melissa',123456789105,TO_DATE('19/02/2003','DD/MM/YYYY'),'Engenheiro'),
+            (12345678905,'Bruna',123456789105,TO_DATE('17/09/2003','DD/MM/YYYY'),'Profissional da Saude'),
+            (12345678906,'Felipe',123456789104,TO_DATE('31/01/2001','DD/MM/YYYY'),'Militar'),
+            (12345678907,'Daniel',123456789105,TO_DATE('11/11/2002', 'DD/MM/YYYY'),'Engenheiro'),
+            (12345678908,'Guilherme',123456789103,TO_DATE('23/01/2001','DD/MM/YYYY'),'Pesquisador'),
+            (12345678909,'Aquiles',123456789100,TO_DATE('11/09/1994','DD/MM/YYYY'),'Operario'),
+	    (12345678910,'Fausto Silva',123456789103,TO_DATE('08/03/1990','DD/MM/YYYY'),'Militar'),
+	    (12345678911,'Leila Pereira',123456789104,TO_DATE('01/01/2001','DD/MM/YYYY'),'Militar'),
+	    (12345678912,'Edson Arantes',123456789102,TO_DATE('12/10/1994','DD/MM/YYYY'),'Militar'),
+	    (12345678913,'Marcos Leonardo',123456789102,TO_DATE('01/02/2003','DD/MM/YYYY'),'Pesquisador'),
+	    (12345678914,'Joaquim',123456789103,TO_DATE('10/04/1999','DD/MM/YYYY'),null),
+	    (12345678915,'Mancho Verdo',123456789100,TO_DATE('02/02/1992','DD/MM/YYYY'),null);
 
 INSERT INTO ENGENHEIRO
        VALUES
