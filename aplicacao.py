@@ -19,6 +19,9 @@ def calculaDuracaoViagem(hora_saida, hora_chegada):
     diferenca_em_minutos, segundos_restantes = divmod(diferenca_em_segundos, 60)
     diferenca_em_horas, minutos_restantes = divmod(diferenca_em_minutos, 60)
 
+    if (diferenca_em_horas > 24) or (diferenca_em_horas ==  24 and minutos_restantes > 0) :
+        return False
+
     # Exiba a diferença em formato HH:MM
     formato_hora = '{:02}:{:02}'.format(int(diferenca_em_horas), int(minutos_restantes))
     return(f'{formato_hora}')
@@ -99,10 +102,13 @@ def inserirViagem():
             distancia = input("Digite a distância da rota utilizada na viagem: ")
 
         hora_chegada = input("Insira a data e a hora prevista para a chegada da nave à colônia de destino (no formato DD/MM/YYYY hh:mm): ")
-        while (not verificarFormatoData(hora_chegada.split()[0])) or (not verificarFormatoHorario(hora_chegada.split()[1])):
-            print("Parece que você digitou uma data ou uma hora inválida ou no formato errado. Tente novamente.")
-            hora_chegada = input("Insira a data e a hora prevista para a chegada da nave à colônia de destino (no formato DD/MM/YYYY hh:mm): ")
-
+        while (not verificarFormatoData(hora_chegada.split()[0])) or (not verificarFormatoHorario(hora_chegada.split()[1]) or (not calculaDuracaoViagem(data_hora, hora_chegada))):
+            if not calculaDuracaoViagem(data_hora, hora_chegada):
+                print("Viagem com duração miuto longa. Não são permitidas viagens com duração maior que 24 horas.")
+            else:
+                print("Parece que você digitou uma data ou uma hora inválida ou no formato errado. Tente novamente.")
+            hora_chegada = input("Insira a data e a hora prevista para a chegada da nave à colônia de destino (no formato DD/MM/YYYY hh:mm): ")    
+        
         preco = input("Insira o preço da passagem (utilize '.' como separador decimal se necessário): ")
         while not verificarFormatoPreco(preco):
             print("Parece que você digitou um preço inválido. Tente novamente.")
@@ -113,8 +119,6 @@ def inserirViagem():
             print("Parece que você digitou um CPF inválido. Tente novamente.")
             piloto = input("Digite o CPF do piloto responsável pela viagem: ")
         
-        duracao = calculaDuracaoViagem(data_hora, hora_chegada)
-
         try:
             #conecta-se à base de dados 
             with psycopg.connect("host=localhost port=5432 dbname=postgres user=briotisk password=123admin connect_timeout=10") as conexao:
@@ -123,7 +127,7 @@ def inserirViagem():
                 with conexao.cursor() as cur:
                 
                     #executa o comando de inserção passando os valores lidos como argumento
-                    cur.execute("INSERT INTO VIAGEM VALUES('" + data_hora + ":00', '" + nave + "', " + origem + ", " + destino + ", " + distancia + ", '" + hora_chegada + ":00', " + preco + ", " + piloto + ", '" + duracao + ":00')")
+                    cur.execute("INSERT INTO VIAGEM VALUES('" + data_hora + ":00', '" + nave + "', " + origem + ", " + destino + ", " + distancia + ", '" + hora_chegada + ":00', " + preco + ", " + piloto + ", '" + calculaDuracaoViagem(data_hora, hora_chegada) + ":00')")
 
                     #salva as alterações 
                     conexao.commit()
@@ -139,7 +143,7 @@ def consultarViagem():
     data_viagem = input("Digite a data da viagem (no formato DD/MM/YYYY): ")
     while not verificarFormatoData(data_viagem):
         print("Parece que você digitou uma data inválida ou no formato errado. Tente novamente.")
-        data_viagem = input("Digite a data da viagem: ")
+        data_viagem = input("Digite a data da viagem (no formato DD/MM/YYYY): ")
 
     origem = input("Digite o id da colônia de origem: ")
     while (len(origem) != 12) or (not origem.isnumeric):
