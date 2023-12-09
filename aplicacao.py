@@ -99,7 +99,7 @@ def inserirViagem():
             with conexao.cursor() as cur:
             
                 #executa um comando
-                cur.execute("INSERT INTO VIAGEM VALUES('%s:00,DD/MM/YYYY HH:MM:SS', '%s', '%s', '%s', %s, '%s:00,HH:MM:SS', %s, %s, '%s:00,HH:MM:SS'")
+                cur.execute("INSERT INTO VIAGEM VALUES('%s:00,DD/MM/YYYY HH:MM:SS', '%s', '%s', '%s', %s, '%s:00,HH:MM:SS', %s, %s, '%s:00,HH:MM:SS'", (data_hora, nave, origem, destino, hora_chegada, preco, piloto, duracao))
 
                 #retorna a lista de tuplas que obedecem à condição de consulta
                 cur.fetchall()
