@@ -149,25 +149,25 @@ INSERT INTO TRABALHO_SAUDE
 
 INSERT INTO ROTA
        VALUES
-            ('Ararino','Nova Catanduva',220000,1200),
-            ('Nova Catanduva','Brasilio',270,70),
-	    ('Natalina','Campo Longo',330,80),
-	    ('Ararino','São Marcos',400,100),
-	    ('Campo Longo','São Marcos',150000,1000),
-            ('Brasilio','Campo Longo',45000,1000),
-            ('São Marcos','Brasilio',218000,1000),
-	    ('Campo Longo','Nova Catanduva',50000,1000);
+          ('Ararino','Nova Catanduva',220000,12000),
+          ('Nova Catanduva','Brasilio',270,540),
+	     ('Natalina','Campo Longo',330,170),
+	     ('Ararino','São Marcos',400,200),
+	     ('Campo Longo','São Marcos',150000,13000),
+          ('Brasilio','Campo Longo',45000,8000),
+          ('São Marcos','Brasilio',218000,11000),
+	     ('Campo Longo','Nova Catanduva',50000,5000);
 
 INSERT INTO VIAGEM
        VALUES
-            (TIMESTAMP('12/02/2023,DD/MM/YYYY'),'HSL9D9S2','Ararino','São Marcos',400,TIMESTAMP('12:30:00,HH/MM/SS'),200,12345678900,TIME('02:00, HH:MM')),
-	    (TIMESTAMP('20/08/2023,DD/MM/YYYY'),'HSL9D9S2','Ararino','Nova Catanduva',220000,TIMESTAMP('15:00:00,HH/MM/SS'),1400,12345678900,TIME('200:00, HHH:MM')),
-            (TIMESTAMP('12/10/2022,DD/MM/YYYY'),'HSL9D9S2','Nova Catanduva','Brasilio',270,TIMESTAMP('10:30:00,HH/MM/SS'),230,12345678900,TIME('01:20, HH:MM')),
-	    (TIMESTAMP('30/03/2020,DD/MM/YYYY'),'HSL9D9S2','Natalina','Campo Longo',330,TIMESTAMP('19:30:00,HH/MM/SS'),260,12345678900,TIME('01:10, HH:MM')),
-	    (TIMESTAMP('2O/02/2023,DD/MM/YYYY'),'LDV37C3F','Campo Longo','São Marcos',150000,TIMESTAMP('12:00:00,HH/MM/SS'),1000,12345678911,TIME('155:00, HHH:MM')),
-            (TIMESTAMP('31/01/2022,DD/MM/YYYY'),'LDV37C3F','Brasilio','Campo Longo',45000,TIMESTAMP('02:00:00,HH/MM/SS'),500,12345678911,TIME('90:00, HH:MM')),
-            (TIMESTAMP('04/02/2023,DD/MM/YYYY'),'LDV37C3F','São Marcos','Brasilio',21800,TIMESTAMP('20:30:00,HH/MM/SS'),1375,12345678911,TIME('220:00, HHH:MM')),
-	    (TIMESTAMP('21/07/2022,DD/MM/YYYY'),'LDV37C3F', 'Campo Longo','Nova Catanduva',50000,TIMESTAMP('21:30:00,HH/MM/SS'),510,12345678911,TIME('100:00, HH:MM'));	
+         (TIMESTAMP('12/02/2023 10:30:00,DD/MM/YYYY HH:MM:SS'),'HSL9D9S2','Ararino','São Marcos',400,TIME('12:30:00,HH:MM:SS'),200,12345678900,TIME('02:00:00, HH:MM:SS')),
+	    (TIMESTAMP('20/08/2023 5:00:00,DD/MM/YYYY HH:MM:SS'),'HSL9D9S2','Ararino','Nova Catanduva',220000,TIME('00:00:00,HH:MM:SS'),1400,12345678900,TIME('19:00:00, HH:MM:SS')),
+         (TIMESTAMP('12/10/2022 15:30:00,DD/MM/YYYY HH:MM:SS'),'HSL9D9S2','Nova Catanduva','Brasilio',270,TIME('16:00:00,HH:MM:SS'),230,12345678900,TIME('00:30:00, HH:MM:SS')),
+	    (TIMESTAMP('30/03/2020 21:30:00,DD/MM/YYYY HH:MM:SS'),'HSL9D9S2','Natalina','Campo Longo',330,TIME('22:20:00,HH:MM:SS'),260,12345678900,TIME('00:50:00, HH:MM:SS')),
+	    (TIMESTAMP('2O/02/2023 5:30:00,DD/MM/YYYY HH:MM:SS'),'LDV37C3F','Campo Longo','São Marcos',150000,TIME('15:00:00,HH:MM:SS'),1000,12345678911,TIME(11':30:00, HHH:MM:SS')),
+         (TIMESTAMP('31/01/2022 20:00:00,DD/MM/YYYY HH:MM:SS'),'LDV37C3F','Brasilio','Campo Longo',45000,TIME('02:00:00,HH:MM:SS'),500,12345678911,TIME('6:00:00, HH:MM:SS')),
+         (TIMESTAMP('04/02/2023 18:00:00,DD/MM/YYYY HH:MM:SS'),'LDV37C3F','São Marcos','Brasilio',218000,TIME('14:30:00,HH:MM:SS'),1375,12345678911,TIME('20:00:00, HHH:MM:SS')),
+	    (TIMESTAMP('21/07/2022 11:00:00,DD/MM/YYYY HH:MM:SS'),'LDV37C3F', 'Campo Longo','Nova Catanduva',50000,TIME('21:30:00,HH:MM:SS'),510,12345678911,TIME('10:30:00, HH:MM:SS'));	
 	
 
 INSERT INTO VIAJAM
