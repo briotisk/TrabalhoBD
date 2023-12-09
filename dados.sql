@@ -85,12 +85,12 @@ INSERT INTO BASE_MILITAR
 
 INSERT INTO MILITAR
        VALUES
-            (12345678900, 'Tenente', 'Piloto', HORA_ENTRADA, HORA_SAIDA, 343872300),
-            (12345678901, 'Cabo', 'Soldado', HORA_ENTRADA, HORA_SAIDA, 861820375),
-            (12345678906, 'Sargento', 'Explorador', HORA_ENTRADA, 343872300),
-            (12345678910, 'Major', 'Soldado', HORA_ENTRADA, HORA_SAIDA, 343872300),
-            (12345678911, 'General', 'Piloto', HORA_ENTRADA, HORA_SAIDA, 861820375),
-            (12345678912, 'Coronel', 'Explorador', HORA_ENTRADA, HORA_SAIDA, 861820375);
+            (12345678900, 'Tenente', 'Piloto', TIME(('06:00:00, HH:MM:SS')), TIME(('18:00:00, HH:MM:SS')), 343872300),
+            (12345678901, 'Cabo', 'Soldado', TIME(('10:00:00, HH:MM:SS')), TIME(('22:00:00, HH:MM:SS')), 861820375),
+            (12345678906, 'Sargento', 'Explorador', TIME(('12:00:00, HH:MM:SS')), TIME(('00:00:00, HH:MM:SS')), 343872300),
+            (12345678910, 'Major', 'Soldado', TIME(('22:00:00, HH:MM:SS')), TIME(('10:00:00, HH:MM:SS')), 343872300),
+            (12345678911, 'General', 'Piloto', TIME(('18:00:00, HH:MM:SS')), TIME(('06:00:00, HH:MM:SS')), 861820375),
+            (12345678912, 'Coronel', 'Explorador', TIME(('00:00:00, HH:MM:SS')), TIME(('12:00:00, HH:MM:SS')), 861820375);
 
 INSERT INTO PILOTO
        VALUES
@@ -129,8 +129,8 @@ INSERT INTO DEFENDE
 
 INSERT INTO EXPLORA
        VALUES
-            (12345678906,'Marte',datahora),
-            (12345678912,'Titã',datahora);
+            (12345678906,'Marte', TIMESTAMP('21/06/2023 12:30:00, DD/MM/YYYY HH:MM:SS')),
+            (12345678912,'Titã', TIMESTAMP('10/08/2023 17:00:00, DD/MM/YYYY HH:MM:SS'));
 
 INSERT INTO PROJETA_INSTALACAO
        VALUES
@@ -155,7 +155,11 @@ INSERT INTO ROTA
 	    ('Ararino','São Marcos',400,100),
 	    ('Campo Longo','São Marcos',150000,1000),
             ('Brasilio','Campo Longo',45000,1000),
+<<<<<<< HEAD
             ('São Marcos','Brasilio',218000,1000),
+=======
+            ('São Marcos','Brasilio',218000,1200),
+>>>>>>> c480d8d5a4df42537c12379d650a23f880aa5523
 	    ('Campo Longo','Nova Catanduva',50000,1000);
 
 INSERT INTO VIAGEM
