@@ -85,12 +85,12 @@ INSERT INTO BASE_MILITAR
 
 INSERT INTO MILITAR
        VALUES
-            (12345678900, 'Tenente', 'Piloto', TIME(('06:00:00, HH:MM:SS')), TIME(('18:00:00, HH:MM:SS')), 343872300),
-            (12345678901, 'Cabo', 'Soldado', TIME(('10:00:00, HH:MM:SS')), TIME(('22:00:00, HH:MM:SS')), 861820375),
-            (12345678906, 'Sargento', 'Explorador', TIME(('12:00:00, HH:MM:SS')), TIME(('00:00:00, HH:MM:SS')), 343872300),
-            (12345678910, 'Major', 'Soldado', TIME(('22:00:00, HH:MM:SS')), TIME(('10:00:00, HH:MM:SS')), 343872300),
-            (12345678911, 'General', 'Piloto', TIME(('18:00:00, HH:MM:SS')), TIME(('06:00:00, HH:MM:SS')), 861820375),
-            (12345678912, 'Coronel', 'Explorador', TIME(('00:00:00, HH:MM:SS')), TIME(('12:00:00, HH:MM:SS')), 861820375);
+            (12345678900, 'Tenente', 'Piloto', '06:00:00', '18:00:00', 343872300),
+            (12345678901, 'Cabo', 'Soldado', '10:00:00', '22:00:00', 861820375),
+            (12345678906, 'Sargento', 'Explorador', '12:00:00', '00:00:00', 343872300),
+            (12345678910, 'Major', 'Soldado', '22:00:00', '10:00:00', 343872300),
+            (12345678911, 'General', 'Piloto', '18:00:00', '06:00:00', 861820375),
+            (12345678912, 'Coronel', 'Explorador', '00:00:00', '12:00:00', 861820375);
 
 INSERT INTO PILOTO
        VALUES
@@ -129,8 +129,8 @@ INSERT INTO DEFENDE
 
 INSERT INTO EXPLORA
        VALUES
-            (12345678906,'Marte', TIMESTAMP('21/06/2023 12:30:00, DD/MM/YYYY HH:MM:SS')),
-            (12345678912,'Titã', TIMESTAMP('10/08/2023 17:00:00, DD/MM/YYYY HH:MM:SS'));
+            ('Marte',12345678906, '21/06/2023 12:30:00'),
+            ('Titã', 12345678912,'10/08/2023 17:00:00');
 
 INSERT INTO PROJETA_INSTALACAO
        VALUES
