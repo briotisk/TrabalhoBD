@@ -4,14 +4,40 @@ from datetime import datetime
 
 #falta evitar SQL injection
 
+def calculaDuracaoViagem(hora_saida, hora_chegada):
+
+    # Crie um objeto datetime a partir da string
+    datetime1 = datetime.strptime(hora_saida, "%d/%m/%Y %H:%M")
+    datetime2 = datetime.strptime(hora_chegada, "%d/%m/%Y %H:%M")
+
+    # Agora, você tem um objeto datetime que pode ser convertido para timestamp se necessário
+    timestamp1 = datetime.timestamp(datetime1)
+    timestamp2 = datetime.timestamp(datetime2)
+
+    # Calcule a diferença em segundos
+    diferenca_em_segundos = timestamp2 - timestamp1
+
+    # Converta a diferença para horas e minutos
+    diferenca_em_minutos, segundos_restantes = divmod(diferenca_em_segundos, 60)
+    diferenca_em_horas, minutos_restantes = divmod(diferenca_em_minutos, 60)
+
+    # Exiba a diferença em formato HH:MM
+    formato_hora = '{:02}:{:02}'.format(int(diferenca_em_horas), int(minutos_restantes))
+    return(f'{formato_hora}')
+
 #função que verifica se o horário está no formato adequado
 def verificarFormatoHorario(entrada_usuario):
 
     # Padrão de expressão regular para HH:MM
     padrao = re.compile(r'^([01]?[0-9]|2[0-3]):[0-5][0-9]$')
 
-    #verifica se a entrada do usuário passada como argumento segue o padrão especificado acima e retorna o resultado da comparação
-    return padrao.match(entrada_usuario)
+    #verifica se a entrada do usuário passada como argumento segue o padrão especificado acima e retorna True em caso airmativo ou False caso contrário
+    if padrao.match(entrada_usuario) == None:
+        return False
+    
+    else:
+        return True
+
 
 #função que verifica se a data está no formato adequado
 def verificarFormatoData(entrada_usuario):
@@ -19,8 +45,12 @@ def verificarFormatoData(entrada_usuario):
     # Padrão de expressão regular para DD/MM/YYYY
     padrao = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$')
 
-    #verifica se a entrada do usuário passada como argumento segue o padrão especificado acima e retorna o resultado da comparação
-    return padrao.match(entrada_usuario)
+    #verifica se a entrada do usuário passada como argumento segue o padrão especificado acima e retorna True em caso airmativo ou False caso contrário
+    if padrao.match(entrada_usuario) == None:
+        return False
+    
+    else:
+        return True
 
 #função que verifica se o preço está no formato adequado
 def verificarFormatoPreco(entrada_usuario):
@@ -85,15 +115,7 @@ def inserirViagem():
             print("Parece que você digitou um CPF inválido. Tente novamente.")
             piloto = input("Digite o CPF do piloto responsável pela viagem: ")
         
-        duracao = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
-        while not verificarFormatoHorario(duracao):
-            print("Parece que você digitou a hora no formato errado ou valor inválido. Tente novamente.")
-            duracao = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
-        ##duracao_obj = datetime.strptime(data_hora.split()[1], "%H:%M").time() - datetime.strptime(hora_chegada, "%H:%M").time()
-        ##duracao = datetime.combine(datetime.today(), duracao_obj).strftime("%H:%M")
-        ##print(duracao)
-
-        print("INSERT INTO VIAGEM VALUES('" + data_hora + ":00', '" + nave + "', " + origem + ", " + destino + ", " + distancia + ", '" + hora_chegada + ":00', " + preco + ", " + piloto + ", '" + duracao + ":00')")
+        duracao = calculaDuracaoViagem(data_hora, hora_chegada)
 
         try:
             #conecta-se à base de dados 
@@ -130,7 +152,8 @@ def consultarViagem():
     while ((destino != "") and (len(destino) != 12) or (not destino.isnumeric)):
             print("Parece que você digitou um id de colônia inválido. Tente novamente.")
             destino = input("Digite o id da colônia de onde deve partir a nave: ")
-
+    print("\n")
+    
     #verifica se o usuário especificou o destino
     if destino == "":
         #pesquisar todas as viagens que partem da colonia origem na data especificada
@@ -163,8 +186,18 @@ def consultarViagem():
                         print("Ops... parece que não viagens entre estas colonias na data especificada")
                 else:
 
+                    print(f'Foram encontrados um total de {len(list)} resultados')
                     for record in list:
-                        print(record)
+                        print(f'Horário previsto da partida: {record[0]}')
+                        print(f'Nave: {record[1]}')
+                        print(f'Colônia de origem: {record[2]}')                        
+                        print(f'Colônia de destino: {record[3]}')                        
+                        print(f'Distância da viagem: {record[4]}')                        
+                        print(f'Horário previsto da chegada {record[5]}')
+                        print(f'Preço da passagem: {record[6]}')
+                        print(f'Piloto responsável por conduzir a viagem: {record[7]}')
+                        print(f'Duração estimada da viagem: {record[8]}')                        
+                        print("\n")
 
                 #salva as alterações 
                 conexao.commit()
@@ -188,6 +221,7 @@ while(op != 3):
 
     #leitura da escolha do usuário
     op = int(input(""))
+    print("\n")
 
     #chamada da função relativa à escolha feita pelo usuário
     if op == 1:
