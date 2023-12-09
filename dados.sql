@@ -149,8 +149,14 @@ INSERT INTO TRABALHO_SAUDE
 
 INSERT INTO ROTA
        VALUES
-            (),
-            ();
+            ('Ararino','Nova Catanduva',220000,1200),
+            ('Nova Catanduva','Brasilio',270,70),
+	    ('Natalina','Campo Longo',330,80),
+	    ('Ararino','São Marcos',400,100),
+	    ('Campo Longo','São Marcos'),
+            ('Brasilio','Campo Longo',45000,1000),
+            ('São Marcos','Brasilio',218000,),
+	    ('Campo Longo','Nova Catanduva',50000,1000);
 
 INSERT INTO VIAGEM
        VALUES
