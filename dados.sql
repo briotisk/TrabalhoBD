@@ -153,9 +153,9 @@ INSERT INTO ROTA
             ('Nova Catanduva','Brasilio',270,70),
 	    ('Natalina','Campo Longo',330,80),
 	    ('Ararino','São Marcos',400,100),
-	    ('Campo Longo','São Marcos'),
+	    ('Campo Longo','São Marcos',150000,1000),
             ('Brasilio','Campo Longo',45000,1000),
-            ('São Marcos','Brasilio',218000,),
+            ('São Marcos','Brasilio',218000,1200),
 	    ('Campo Longo','Nova Catanduva',50000,1000);
 
 INSERT INTO VIAGEM
