@@ -53,12 +53,12 @@ def inserirViagem():
             nave = input("Insira a placa da nave utilizada na viagem: ")
 
         origem = input("Digite o id da colônia de onde deve partir a nave: ")
-        while (len(origem) != 10) or (not origem.isnumeric):
+        while (len(origem) != 12) or (not origem.isnumeric):
             print("Parece que você digitou um id de colônia inválido. Tente novamente.")
             origem = input("Digite o id da colônia de onde deve partir a nave: ")
 
         destino = input("Digite o id da colônia de destino da viagem: ")
-        while (len(destino) != 10) or (not destino.isnumeric):
+        while (len(destino) != 12) or (not destino.isnumeric):
             print("Parece que você digitou um id de colônia inválido. Tente novamente.")
             destino = input("Digite o id da colônia de destino da viagem: ")
 
@@ -93,7 +93,7 @@ def inserirViagem():
 #TRATAR EXCEÇÕES
 
         #conecta-se à base de dados 
-        with psycopg.connect("dbname=test user=postgres") as conexao:
+        with psycopg.connect("dbname=trab-bd user=postgres") as conexao:
         
             #abre um cursor para realizar as operações no banco de dados
             with conexao.cursor() as cur:
@@ -121,12 +121,12 @@ def consultarViagem():
         data_viagem = input("Digite a data da viagem: ")
 
     origem = input("Digite o id da colônia de origem: ")
-    while (len(origem) != 10) or (not origem.isnumeric):
+    while (len(origem) != 12) or (not origem.isnumeric):
             print("Parece que você digitou um id de colônia inválido. Tente novamente.")
             origem = input("Digite o id da colônia de onde deve partir a nave: ")
 
     destino = input("Digite o id da colônia de destino (opcional): ")
-    while ((destino != "") and (len(destino) != 10) or (not destino.isnumeric)):
+    while ((destino != "") and (len(destino) != 12) or (not destino.isnumeric)):
             print("Parece que você digitou um id de colônia inválido. Tente novamente.")
             destino = input("Digite o id da colônia de onde deve partir a nave: ")
 
@@ -142,7 +142,7 @@ def consultarViagem():
         print(pesquisa)
     
     #conecta-se à base de dados 
-    with psycopg.connect("dbname=test user=postgres") as conexao:
+    with psycopg.connect("dbname=trab-bd user=postgres") as conexao:
     
         #abre um cursor para realizar as operações no banco de dados
         with conexao.cursor() as cur:
