@@ -11,7 +11,16 @@ def verificarFormatoHorario(entrada_usuario):
 
 def verificarFormatoData(entrada_usuario):
     # Padrão de expressão regular para HH:MM
-    padrao = re.compile(r'^\d{2}/\d{2}/\d{4}$')
+    padrao = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$')
+
+    if padrao.match(entrada_usuario):
+        return True
+    else:
+        return False
+    
+def verificarFormatoPreco(entrada_usuario):
+    # Padrão de expressão regular para HH:MM
+    padrao = re.compile(r'^\d+(\.\d{1,2})?$')
 
     if padrao.match(entrada_usuario):
         return True
@@ -25,16 +34,26 @@ def inserirViagem():
     for i in range(num_viagens):
 
         print("Para a " + str(i+1) + " viagem:")
+
         data_hora = input("Insira a data e a hora da viagem (no formato DD/MM/YYYY hh:mm): ")
-        #checar se está no formato desejado
+        while (not verificarFormatoData(data_hora.split()[0])) or (not verificarFormatoHorario(data_hora.split()[1])):
+            print("Parece que você digitou uma data ou uma hora inválida ou no formato errado. Tente novamente.")
+            data_hora = input("Insira a data e a hora da viagem (no formato DD/MM/YYYY hh:mm): ")
 
         nave = input("Insira a placa da nave utilizada na viagem: ")
         while (len(nave) != 8) or (not nave.isalnum()):
             print("Parece que você digitou uma placa inválida. Tente novamente.")
             nave = input("Insira a placa da nave utilizada na viagem: ")
 
-        origem = input("Digite o nome da colônia de onde deve partir a nave: ")
-        destino = input("Digite o nome da colônia de destino da viagem: ")
+        origem = input("Digite o id da colônia de onde deve partir a nave: ")
+        while (len(origem) != 10) or (not origem.isnumeric):
+            print("Parece que você digitou um id de colônia inválido. Tente novamente.")
+            origem = input("Digite o id da colônia de onde deve partir a nave: ")
+
+        destino = input("Digite o id da colônia de destino da viagem: ")
+        while (len(destino) != 10) or (not destino.isnumeric):
+            print("Parece que você digitou um id de colônia inválido. Tente novamente.")
+            destino = input("Digite o id da colônia de destino da viagem: ")
 
         distancia = input("Digite a distância da rota utilizada na viagem: ")
         while (distancia == "") or (not distancia.isnumeric()) or (len(distancia) > 8):
@@ -48,17 +67,21 @@ def inserirViagem():
             print("Parece que você digitou a hora no formato errado ou valor inválido. Tente novamente.")
             hora_chegada = input("Insira a hora prevista para a chegada da nave à colônia de destino (no formato hh:mm): ")
 
-        preco = input("Insira o preço da passagem (utilize '.' como separador decimal): ")
+        preco = input("Insira o preço da passagem (utilize '.' como separador decimal se necessário): ")
+        while not verificarFormatoPreco(preco):
+            print("Parece que você digitou um preço inválido. Tente novamente.")
+            preco = input("Insira o preço da passagem (utilize '.' como separador decimal se necessário): ")
+
         piloto = input("Digite o CPF do piloto responsável pela viagem: ")
-        while (len(piloto) != 11) or (piloto.isnumeric()):
+        while (len(piloto) != 11) or (not piloto.isnumeric()):
             print("Parece que você digitou um CPF inválido. Tente novamente.")
             piloto = input("Digite o CPF do piloto responsável pela viagem: ")
 
-        duracao = input("Insira a duração real da viagem (no formato hh:mm): ")
+        duracao = input("Insira a duração prevista da viagem (no formato hh:mm): ")
         while not verificarFormatoHorario(duracao):
             print("Parece que você digitou a hora no formato errado ou valor inválido. Tente novamente.")
             duracao = input("Insira a duração real da viagem (no formato hh:mm): ")
-            
+
         #chamar a função de inserção do sql 
 
 def consultarViagem():
