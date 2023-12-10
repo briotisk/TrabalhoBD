@@ -5,6 +5,7 @@ GROUP BY (c.id_Colonia)
     HAVING COUNT(*) > 1
 ORDER BY c.id_Colonia;
 
+-- Pessoas que participaram de todas as viagens que o piloto ‘Gabriel’ pilotou
 SELECT nome, cpf FROM pessoal WHERE 
     NOT EXISTS (
             SELECT data_hora, nave FROM viagem
@@ -12,8 +13,10 @@ SELECT nome, cpf FROM pessoal WHERE
                                 JOIN pessoa pe ON pi.cpf = pe.cpf
                                 WHERE(UPPER(pe.nome) = 'GABRIEL')))
             EXCEPT
-            (SELECT data_hora, nave FROM viajam v WHERE v.pessoa = cpf
+            (SELECT data_hora, nave FROM viajam v WHERE v.pessoa = cpf)
+);
 
+-- Colônia com a menor taxa de habitante por profissional da saúde
 SELECT col.id_colonia, col.nome, col.nrohabitantes/COUNT(ps.cpf) as ProfissionaisDaSaudePorHabitante
 FROM (profissional_saude ps JOIN pessoa p ON ps.cpf = p.cpf)
     JOIN colonia col on p.colonia = col.id_colonia
@@ -25,6 +28,7 @@ GROUP BY col.id_colonia
    				JOIN colonia col ON p.colonia = col.id_colonia
    		 GROUP BY col.id_colonia) as taxa);
 
+-- Lista a colônia com o maior número de pessoas registradas
 SELECT c.id_colonia, c.nome, COUNT(p.cpf) as qtd_pessoas
 FROM colonia c JOIN pessoa p ON p.colonia = c.id_colonia
 GROUP BY c.id_colonia, c.nome
@@ -33,6 +37,7 @@ HAVING COUNT (p.cpf) = ( SELECT MAX(qtds.qtd_pessoas)
 		FROM colonia c JOIN pessoa p ON p.colonia = c.id_colonia
 		GROUP BY c.id_colonia, c.nome) qtds);
 
+-- Lista o número de leitos projetados por cada engenheiro
 SELECT p.nome, c.nome, e.CREA, SUM(h.nroleitos) as qtd_leitos_projetados
 FROM ((((projeta_instalacao pj JOIN hospital h ON pj.instalacao = h.id_instalacao)
 	RIGHT JOIN engenheiro e ON pj.engenheiro = e.cpf)
@@ -41,7 +46,8 @@ FROM ((((projeta_instalacao pj JOIN hospital h ON pj.instalacao = h.id_instalaca
 	)
 GROUP BY e.cpf, p.nome, c.nome, e. CREA;
 
-SELECT p.nome, p.profissao, c.Nome as colonia
+-- Identificação das pessoas mais velhas de uma colônia
+SELECT p.nome, p.profissao, c.Nome  as colonia
 FROM pessoa p JOIN colonia c ON p.colonia = c.Id_colonia
 WHERE DataNasc in
 	(SELECT min(DataNasc)
