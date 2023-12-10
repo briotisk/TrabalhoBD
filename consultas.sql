@@ -41,7 +41,7 @@ FROM ((((projeta_instalacao pj JOIN hospital h ON pj.instalacao = h.id_instalaca
 	)
 GROUP BY e.cpf, p.nome, c.nome, e. CREA;
 
-SELECT p.nome, p.profissao, c.Nome
+SELECT p.nome, p.profissao, c.Nome as colonia
 FROM pessoa p JOIN colonia c ON p.colonia = c.Id_colonia
 WHERE DataNasc in
 	(SELECT min(DataNasc)
