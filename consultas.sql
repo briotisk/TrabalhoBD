@@ -6,12 +6,12 @@ GROUP BY (c.id_Colonia)
 ORDER BY c.id_Colonia;
 
 -- Pessoas que participaram de todas as viagens que o piloto ‘Gabriel’ pilotou
-SELECT nome, cpf FROM pessoal WHERE 
+SELECT nome, cpf FROM pessoa WHERE 
     NOT EXISTS (
             SELECT data_hora, nave FROM viagem
                 WHERE piloto = (SELECT pi.cpf FROM piloto pi
                                 JOIN pessoa pe ON pi.cpf = pe.cpf
-                                WHERE(UPPER(pe.nome) = 'GABRIEL')))
+                                WHERE(UPPER(pe.nome) = 'GABRIEL'))
             EXCEPT
             (SELECT data_hora, nave FROM viajam v WHERE v.pessoa = cpf)
 );
